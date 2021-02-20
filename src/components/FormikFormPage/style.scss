@@ -1,0 +1,28 @@
+.formBlock {
+    width: 1000px;
+    margin: auto;
+    border-bottom: 2px solid grey;
+
+    h1 {
+        text-align: left;
+    }
+
+    .error {
+        color: red
+    }
+
+    .btn {
+        background-color: rgb(113, 113, 204);
+        color: white;
+        width: 200px;
+        margin: auto;
+        &:hover {   
+            background-color: rgb(52, 52, 102);
+            color: white;
+            transform: rotate(360deg) scaleX(1.5) ;
+            transition: 0.5s;
+        }
+        
+    }
+
+}
