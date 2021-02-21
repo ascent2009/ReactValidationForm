@@ -66,7 +66,7 @@ const SimpleForm = () => {
 
   return (
   <div className="formBlock">
-    <h1>Simple Form</h1>
+    <h1 style={{textAlign: 'center'}}>Form with Formik && Yup</h1>
       <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}

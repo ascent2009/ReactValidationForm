@@ -8,6 +8,69 @@
     font-weight: normal;
 }
 
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 1000px;
+    height: 100px;
+    margin: auto;
+    position: sticky;
+    bottom: 0;
+
+    
+    .openMenu {
+        position: absolute;
+        right: 5%;
+        opacity: 0.5;
+        &:hover {
+            opacity: 1;
+        }
+        &:active {
+            padding-top: 2px;
+        }
+    }
+    
+    @keyframes moveFromRight{
+        from {
+        transform: translateX(30%) scaleX(0.2);
+        }
+        to {
+        transform: translateX(0%);
+        }
+       } 
+    
+    .headerMenu {
+        width: 70%;
+        margin: 30px auto;
+        background: linear-gradient(350deg, rgb(200, 200, 230) 0%, white 100%);
+        border: 2px solid rgb(187, 181, 181);
+        border-top: none;
+        border-left: none;
+        animation: moveFromRight 400ms ease;
+        
+        .menu {   
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+            list-style: none;
+            font-size: 20px;
+            font-weight: bold;
+
+            .menuItem a {
+                text-decoration: none;
+                color: $textColor;
+                outline: none;
+                    &:active {
+                        color:rgb(126, 122, 122);
+                        transform: translateY(2px);
+                    }
+            }
+        
+        }
+    }
+}
+
 .content {
     width: 40%;
     margin: auto;
@@ -31,6 +94,7 @@
 .link {
     color: #0880AE;
     text-decoration: none;
+    outline: none;
 }
 
 form {
@@ -56,6 +120,7 @@ form {
         }
 
         .input {
+            position: relative;
             height: 52px;
             font-size: 16px;
             line-height: 21px;
@@ -71,6 +136,16 @@ form {
                 padding-right: 15px;
             }
         }
+            .error {
+                position: absolute;
+                text-indent: 10px;
+                font-size: 15px;
+                color: #f82068;
+                margin: 80px 10px auto;
+                z-index: 1;
+                // padding: 10px;
+                background:#FFFFFF
+            }
     }
 
     
@@ -120,4 +195,14 @@ form {
     line-height: 21px;
     text-align: center;
     color: #B1B5BF;
+    &:active {
+        transform: translateY(2px);
+    }
 }
+
+.active {
+    background-color: rgb(52, 52, 102);
+    color: white;
+}
+
+
