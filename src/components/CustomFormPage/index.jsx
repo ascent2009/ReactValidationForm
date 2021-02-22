@@ -6,6 +6,7 @@ const CustomForm = () => {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [lang, setLang] = useState('')
+    const [checked, setChecked] = useState(false)
         
     const [nameDirty, setNameDirty] = useState(false)
     const [emailDirty, setEmailDirty] = useState(false)
@@ -15,21 +16,21 @@ const CustomForm = () => {
     const [nameError, setNameError] = useState('Поле не может быть пустым')
     const [emailError, setEmailError] = useState('Поле не может быть пустым')
     const [phoneError, setPhoneError] = useState('Поле не может быть пустым')
-    const [langError, setLangError] = useState('Выбрите значение из списка')
+    const [langError, setLangError] = useState('Выберите значение из списка')
 
-    const [style, setStyle] = useState(
+    const [style] = useState(
         {color: 'red'}
     )
 
     const [formValid, setFormValid] = useState(false);
-
+    
     useEffect(() => {
-        if (nameError || emailError || phoneError || langError) {
+        if (nameError || emailError || phoneError || langError || !checked) {
             setFormValid(false)
         } else {
             setFormValid(true)
         }
-    }, [nameError, emailError, phoneError, langError])
+    }, [nameError, emailError, phoneError, langError, checked])
 
     const leaveEmptyForm = (e) => {
         const name = e.target.name;
@@ -92,6 +93,16 @@ const CustomForm = () => {
         const value = target.value;
         console.log(value);
         setLang(value)
+        if (!value) {
+            setLangError('Язык не выбран')
+        } else {
+            setLangError('')
+        }
+    }
+
+    const handleCheckbox = () => {
+        !checked && setChecked(true)
+        checked && setChecked(false)
     }
 
     return (  
@@ -137,7 +148,7 @@ const CustomForm = () => {
                 <select className="input" id="lang" name="lang"
                 value={lang}
                 onBlur={leaveEmptyForm}
-                onChange={e => selectLanguage(e)}
+                onChange={selectLanguage}
                 >
                     <option value="Язык" className="option">Язык</option>
                     <option value="Русский" className="option">Русский</option>
@@ -150,10 +161,12 @@ const CustomForm = () => {
             <div className="checkboxBlock">
                 <input type="checkbox" id="checkbox"
                 name='checked'
+                // checked={false}
+                onChange={handleCheckbox}
                 className="checkbox"></input>
                 <label htmlFor="checkbox">Принимаю <a href="#" className="link">условия</a> использования</label>
             </div>
-            <button type="button" disabled={!formValid} className={!formValid ? "btn" : "btn active"}>Зарегистрироваться</button> 
+            <button type="button" disabled={!formValid} className={!formValid ? "btn" : "btn active"}>Зарегистрироваться</button>
         </form>
     </div>
 )};

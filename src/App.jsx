@@ -11,6 +11,7 @@ class App extends Component {
             <>
                 <HeaderMenu />
                 <Switch>
+                    <Route exact path="/" component={CustomForm} />
                     <Route exact path="/custom" component={CustomForm} />
                     <Route path="/formik" component={SimpleForm} />
                 </Switch>
